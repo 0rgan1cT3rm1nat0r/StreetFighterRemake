@@ -11,6 +11,7 @@ public class P1Movement : MonoBehaviour
     private Animator animator;
     private bool isGrounded = true;
     private bool isCrouching = false;
+    private bool isAttacking = false;
 
     void Start()
     {
@@ -21,6 +22,9 @@ public class P1Movement : MonoBehaviour
     void Update()
     {
         //float move = Input.GetAxis("Horizontal");
+
+        if (isAttacking) return;  // Prevent movement while attacking
+
         if (Input.GetKey(KeyCode.A) && isGrounded)
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
@@ -31,10 +35,28 @@ public class P1Movement : MonoBehaviour
             transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
 
+        // Handle diagonal jumps
         if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W) && isGrounded)
         {
-            ForwardJump();
+            DiagonalJump(Vector2.right);
         }
+
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W) && isGrounded)
+        {
+            DiagonalJump(Vector2.left);
+        }
+
+        /*
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W) && isGrounded)
+        {
+            DiagonalJump();
+        }
+
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W) && isGrounded)
+        {
+            DiagonalJump2();
+        }
+        */
 
         if (Input.GetKeyDown(KeyCode.W) && isGrounded && !isCrouching)
         {
@@ -49,6 +71,22 @@ public class P1Movement : MonoBehaviour
         {
             StandUp();
         }
+
+        // Handle attacks
+        if (Input.GetKeyDown(KeyCode.J)) // Replace KeyCode.J with your preferred attack key
+        {
+            if (isCrouching)
+            {
+                CrouchAttack();
+            }
+            else
+            {
+                Attack();
+            }
+        }
+
+        // Update animator
+        UpdateAnimator();
 
         //Move(move);
         //UpdateAnimator(move);
@@ -67,13 +105,30 @@ public class P1Movement : MonoBehaviour
         Debug.Log("jump");
     }
 
-    void ForwardJump()
+    void DiagonalJump(Vector2 direction)
     {
         isGrounded = false;
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        transform.Translate(Vector2.right * speed);
+        rb.AddForce(direction * speed, ForceMode2D.Impulse);
+        Debug.Log("diagonal jump");
+    }
+    /*
+    void DiagonalJump()
+    {
+        isGrounded = false;
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        rb.AddForce(Vector2.right * speed, ForceMode2D.Impulse);
         Debug.Log("forwardjump");
     }
+
+    void DiagonalJump2()
+    {
+        isGrounded = false;
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        rb.AddForce(Vector2.left * speed, ForceMode2D.Impulse);
+        Debug.Log("backjump");
+    }
+    */
 
     void Crouch()
     {
@@ -88,11 +143,38 @@ public class P1Movement : MonoBehaviour
         // Reset player's collider size and position if needed
     }
 
+    void Attack()
+    {
+        isAttacking = true;
+        animator.SetTrigger("Attack");
+        Debug.Log("attack");
+    }
+
+    void CrouchAttack()
+    {
+        isAttacking = true;
+        animator.SetTrigger("CrouchAttack");
+        Debug.Log("crouch attack");
+    }
+
+    void EndAttack()
+    {
+        isAttacking = false;
+    }
+
+    void UpdateAnimator()
+    {
+        float move = Input.GetAxis("Horizontal");
+        animator.SetFloat("Speed", Mathf.Abs(move));
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isCrouching", isCrouching);
+    }
+
     //void UpdateAnimator(float move)
     //{
-        //animator.SetFloat("Speed", Mathf.Abs(move));
-        //animator.SetBool("isGrounded", isGrounded);
-        //animator.SetBool("isCrouching", isCrouching);
+    //animator.SetFloat("Speed", Mathf.Abs(move));
+    //animator.SetBool("isGrounded", isGrounded);
+    //animator.SetBool("isCrouching", isCrouching);
     //}
 
     void OnCollisionEnter2D(Collision2D collision)
