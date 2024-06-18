@@ -21,7 +21,6 @@ public class P1Movement : MonoBehaviour
 
     void Update()
     {
-        //float move = Input.GetAxis("Horizontal");
 
         if (isAttacking) return;  // Prevent movement while attacking
 
@@ -45,18 +44,6 @@ public class P1Movement : MonoBehaviour
         {
             DiagonalJump(Vector2.left);
         }
-
-        /*
-        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W) && isGrounded)
-        {
-            DiagonalJump();
-        }
-
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W) && isGrounded)
-        {
-            DiagonalJump2();
-        }
-        */
 
         if (Input.GetKeyDown(KeyCode.W) && isGrounded && !isCrouching)
         {
@@ -88,8 +75,6 @@ public class P1Movement : MonoBehaviour
         // Update animator
         UpdateAnimator();
 
-        //Move(move);
-        //UpdateAnimator(move);
     }
 
     void Move(float move)
@@ -112,23 +97,6 @@ public class P1Movement : MonoBehaviour
         rb.AddForce(direction * speed, ForceMode2D.Impulse);
         Debug.Log("diagonal jump");
     }
-    /*
-    void DiagonalJump()
-    {
-        isGrounded = false;
-        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        rb.AddForce(Vector2.right * speed, ForceMode2D.Impulse);
-        Debug.Log("forwardjump");
-    }
-
-    void DiagonalJump2()
-    {
-        isGrounded = false;
-        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        rb.AddForce(Vector2.left * speed, ForceMode2D.Impulse);
-        Debug.Log("backjump");
-    }
-    */
 
     void Crouch()
     {
@@ -170,12 +138,6 @@ public class P1Movement : MonoBehaviour
         animator.SetBool("isCrouching", isCrouching);
     }
 
-    //void UpdateAnimator(float move)
-    //{
-    //animator.SetFloat("Speed", Mathf.Abs(move));
-    //animator.SetBool("isGrounded", isGrounded);
-    //animator.SetBool("isCrouching", isCrouching);
-    //}
 
     void OnCollisionEnter2D(Collision2D collision)
     {
