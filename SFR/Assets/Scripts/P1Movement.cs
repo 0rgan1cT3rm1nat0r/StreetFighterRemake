@@ -31,6 +31,11 @@ public class P1Movement : MonoBehaviour
             transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
 
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W) && isGrounded)
+        {
+            ForwardJump();
+        }
+
         if (Input.GetKeyDown(KeyCode.W) && isGrounded && !isCrouching)
         {
             Jump();
@@ -60,6 +65,14 @@ public class P1Movement : MonoBehaviour
         isGrounded = false;
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         Debug.Log("jump");
+    }
+
+    void ForwardJump()
+    {
+        isGrounded = false;
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        transform.Translate(Vector2.right * speed);
+        Debug.Log("forwardjump");
     }
 
     void Crouch()
