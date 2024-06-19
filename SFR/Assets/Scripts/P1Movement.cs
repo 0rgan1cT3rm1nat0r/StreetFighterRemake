@@ -135,6 +135,7 @@ public class P1Movement : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(move));
         animator.SetBool("isGrounded", isGrounded);
         animator.SetBool("isCrouching", isCrouching);
+        //Robert is a bitch
     }
 
 
