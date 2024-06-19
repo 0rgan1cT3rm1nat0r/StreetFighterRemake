@@ -60,7 +60,7 @@ public class P1Movement : MonoBehaviour
         }
 
         // Handle attacks
-        if (Input.GetKeyDown(KeyCode.J)) // Replace KeyCode.J with your preferred attack key
+        if (Input.GetKeyDown(KeyCode.J))
         {
             if (isCrouching)
             {
@@ -72,7 +72,6 @@ public class P1Movement : MonoBehaviour
             }
         }
 
-        // Update animator
         UpdateAnimator();
 
     }
@@ -108,7 +107,6 @@ public class P1Movement : MonoBehaviour
     void StandUp()
     {
         isCrouching = false;
-        // Reset player's collider size and position if needed
     }
 
     void Attack()
