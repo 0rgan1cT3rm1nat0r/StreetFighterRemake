@@ -27,6 +27,7 @@ public class P1Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.A) && isGrounded)
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
+            animator.SetTrigger("Walking");
         }
 
         if (Input.GetKey(KeyCode.D) && isGrounded)
