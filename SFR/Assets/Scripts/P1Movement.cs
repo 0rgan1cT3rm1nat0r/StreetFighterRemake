@@ -12,6 +12,7 @@ public class P1Movement : MonoBehaviour
     private bool isGrounded = true;
     private bool isCrouching = false;
     private bool isAttacking = false;
+    private bool Walking = false;
 
     void Start()
     {
@@ -27,13 +28,20 @@ public class P1Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.A) && isGrounded)
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
-            animator.SetTrigger("Walking");
+            
         }
 
         if (Input.GetKey(KeyCode.D) && isGrounded)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
+            
         }
+
+        if (Walking == true)
+        {
+            animator.SetTrigger("Walking");
+        }
+
 
         // Handle diagonal jumps
         if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W) && isGrounded)
