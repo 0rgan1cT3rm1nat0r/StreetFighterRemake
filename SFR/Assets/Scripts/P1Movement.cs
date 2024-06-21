@@ -28,21 +28,29 @@ public class P1Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.A) && isGrounded)
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
-            
+            animator.SetBool("Walking2", true);
+            print(Walking);
+        }
+        else
+        {
+            animator.SetBool("Walking2", false);
         }
 
         if (Input.GetKey(KeyCode.D) && isGrounded)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
-            
+            animator.SetBool("Walking", true);
         }
-
-        if (Walking == true)
+        else
         {
-            animator.SetTrigger("Walking");
+            animator.SetBool("Walking", false);
         }
-
-
+        /*
+        if (isGrounded)
+        {
+            animator.SetBool("Walking", false);
+        }
+        */
         // Handle diagonal jumps
         if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W) && isGrounded)
         {
@@ -143,7 +151,7 @@ public class P1Movement : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(move));
         animator.SetBool("isGrounded", isGrounded);
         animator.SetBool("isCrouching", isCrouching);
-        //Robert is a bitch
+        //rOB IS MISSING A FEW EXtTRA CHROMOSOMES  
     }
 
 
