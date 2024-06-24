@@ -25,7 +25,7 @@ public class P1Movement : MonoBehaviour
 
         if (isAttacking) return;  // Prevent movement while attacking
 
-        if (Input.GetKey(KeyCode.A) && isGrounded)
+        if (Input.GetKey(KeyCode.A) && isGrounded && !isCrouching)
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
             animator.SetBool("Walking2", true);
@@ -36,7 +36,7 @@ public class P1Movement : MonoBehaviour
             animator.SetBool("Walking2", false);
         }
 
-        if (Input.GetKey(KeyCode.D) && isGrounded)
+        if (Input.GetKey(KeyCode.D) && isGrounded && !isCrouching)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
             animator.SetBool("Walking", true);
@@ -45,35 +45,47 @@ public class P1Movement : MonoBehaviour
         {
             animator.SetBool("Walking", false);
         }
-        /*
-        if (isGrounded)
-        {
-            animator.SetBool("Walking", false);
-        }
-        */
+
         // Handle diagonal jumps
-        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W) && isGrounded)
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W) && isGrounded && !isCrouching)
         {
             DiagonalJump(Vector2.right);
+            animator.SetBool("isDiagonalJumping", true);
+        }
+        else
+        {
+            animator.SetBool("isDiagonalJumping", false);
         }
 
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W) && isGrounded)
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W) && isGrounded && !isCrouching)
         {
             DiagonalJump(Vector2.left);
+            animator.SetBool("isDiagonalJumping2", true);
+        }
+        else
+        {
+            animator.SetBool("isDiagonalJumping2", false);
         }
 
         if (Input.GetKeyDown(KeyCode.W) && isGrounded && !isCrouching)
         {
             Jump();
+            animator.SetBool("isJumping", true);
+        }
+        else
+        {
+            animator.SetBool("isJumping", false);
         }
 
         if (Input.GetKey(KeyCode.S) && isGrounded)
         {
             Crouch();
+            animator.SetBool("isCrouching", true);
         }
         else
         {
             StandUp();
+            animator.SetBool("isCrouching", false);
         }
 
         // Handle attacks
@@ -83,7 +95,7 @@ public class P1Movement : MonoBehaviour
             {
                 CrouchAttack();
             }
-            else
+            if (!isCrouching)
             {
                 Attack();
             }
