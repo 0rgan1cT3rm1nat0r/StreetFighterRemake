@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 33a0469bdef76994cb304d2de68ac254
+guid: dc2f5814c4c52984aa66b94263b07be3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,85 +136,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle - Ryu_0
+      name: Jumping - Ryu_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 2
-        width: 41
-        height: 82
+        x: 6
+        y: 4
+        width: 33
+        height: 90
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91d43e10693796e43ad0b4c4b6efbf5a
-      internalID: 2045907567
+      spriteID: 3b062f3f72949f7438f46f177a17ff4b
+      internalID: 371497200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle - Ryu_1
+      name: Jumping - Ryu_1
       rect:
         serializedVersion: 2
-        x: 53
-        y: 2
-        width: 41
-        height: 82
+        x: 57
+        y: 4
+        width: 32
+        height: 90
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e7675a4c999cfb449663427787e4fac
-      internalID: 1683066111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle - Ryu_2
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 2
-        width: 41
-        height: 82
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ca7e6060090a9049b6d79787e59506b
-      internalID: 1864662682
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle - Ryu_3
-      rect:
-        serializedVersion: 2
-        x: 151
-        y: 2
-        width: 41
-        height: 82
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ddf8ee6940ef6bf4fa3174dbb6c9f025
-      internalID: 1084747093
+      spriteID: ca1bc4a6ea827894a98a19d4273220c0
+      internalID: -1302812478
       vertices: []
       indices: 
       edges: []
@@ -230,10 +188,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle - Ryu_0: 2045907567
-      Idle - Ryu_1: 1683066111
-      Idle - Ryu_2: 1864662682
-      Idle - Ryu_3: 1084747093
+      Jumping - Ryu_0: 371497200
+      Jumping - Ryu_1: -1302812478
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
