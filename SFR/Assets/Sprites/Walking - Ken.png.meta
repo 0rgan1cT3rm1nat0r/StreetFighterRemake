@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a220f472fb6040a4b82ee2e89de8c280
+guid: b8e97ea14d3649a46b3be56d895b9197
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ken Spritesheet_0
+      name: Walking - Ken_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 4
-        width: 35
-        height: 79
+        x: 3
+        y: 3
+        width: 38
+        height: 81
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bd741614c7ad304b82ceaf5f44018cb
-      internalID: -2001361667
+      spriteID: 6199295b7addff04fbf564dc5033659e
+      internalID: 1320336791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ken Spritesheet_1
+      name: Walking - Ken_1
       rect:
         serializedVersion: 2
-        x: 53
-        y: 4
-        width: 35
-        height: 80
+        x: 55
+        y: 3
+        width: 37
+        height: 81
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c574fc57135d2b4b875539fea3b8a16
-      internalID: -1365436309
+      spriteID: c1977d34a1917624fbe9ba9ba94da4de
+      internalID: 1511555415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ken Spritesheet_2
+      name: Walking - Ken_2
       rect:
         serializedVersion: 2
-        x: 101
-        y: 4
-        width: 35
-        height: 79
+        x: 104
+        y: 3
+        width: 32
+        height: 81
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,20 +192,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7054577842a0fc34cb64b5cc6ceb993c
-      internalID: -1470514747
+      spriteID: c666bc662456e4c45a6ba215d0049e1d
+      internalID: -1228523222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ken Spritesheet_3
+      name: Walking - Ken_3
       rect:
         serializedVersion: 2
-        x: 147
-        y: 4
-        width: 36
-        height: 78
+        x: 151
+        y: 3
+        width: 31
+        height: 81
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,8 +213,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11a3ec76b51f9f44f88b6182f98663b8
-      internalID: -1638640174
+      spriteID: 592c94688e0943e4ba014545b48b95e6
+      internalID: -1714116739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking - Ken_4
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 3
+        width: 30
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1972ae687e2e7864493e1f6e2e47a0df
+      internalID: 1548690380
       vertices: []
       indices: 
       edges: []
@@ -230,10 +251,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ken Spritesheet_0: -2001361667
-      Ken Spritesheet_1: -1365436309
-      Ken Spritesheet_2: -1470514747
-      Ken Spritesheet_3: -1638640174
+      Walking - Ken_0: 1320336791
+      Walking - Ken_1: 1511555415
+      Walking - Ken_2: -1228523222
+      Walking - Ken_3: -1714116739
+      Walking - Ken_4: 1548690380
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
