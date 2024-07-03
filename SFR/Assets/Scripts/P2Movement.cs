@@ -11,6 +11,8 @@ public class P2Movement : MonoBehaviour
     private Animator animator;
     private bool isGrounded = true;
     private bool isCrouching = false;
+    private bool isAttacking = false;
+    private bool Walking = false;
 
     void Start()
     {
@@ -20,43 +22,85 @@ public class P2Movement : MonoBehaviour
 
     void Update()
     {
-        //float move = Input.GetAxis("Horizontal");
-        if (Input.GetKey(KeyCode.LeftArrow) && isGrounded)
+        if (isAttacking) return;  // Prevent movement while attacking
+
+        if (Input.GetKey(KeyCode.LeftArrow) && isGrounded && !isCrouching)
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
+            animator.SetBool("Walking", true);
+            print(Walking);
+        }
+        else
+        {
+            animator.SetBool("Walking", false);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow) && isGrounded)
+        if (Input.GetKey(KeyCode.RightArrow) && isGrounded && !isCrouching)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime);
+            animator.SetBool("Walking2", true);
+        }
+        else
+        {
+            animator.SetBool("Walking2", false);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.UpArrow) && isGrounded)
+        // Handle diagonal jumps
+        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.UpArrow) && isGrounded && !isCrouching)
         {
-            DiagonalJump();
+            DiagonalJump(Vector2.right);
+            animator.SetBool("isDiagonalJumping", true);
+        }
+        else
+        {
+            animator.SetBool("isDiagonalJumping", false);
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.UpArrow) && isGrounded)
+        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.UpArrow) && isGrounded && !isCrouching)
         {
-            DiagonalJump2();
+            DiagonalJump(Vector2.left);
+            animator.SetBool("isDiagonalJumping2", true);
+        }
+        else
+        {
+            animator.SetBool("isDiagonalJumping2", false);
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded && !isCrouching)
         {
             Jump();
+            animator.SetBool("isJumping", true);
+        }
+        else
+        {
+            animator.SetBool("isJumping", false);
         }
 
         if (Input.GetKey(KeyCode.DownArrow) && isGrounded)
         {
             Crouch();
+            animator.SetBool("isCrouching", true);
         }
         else
         {
             StandUp();
+            animator.SetBool("isCrouching", false);
         }
 
-        //Move(move);
-        //UpdateAnimator(move);
+        // Handle attacks
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (isCrouching)
+            {
+                CrouchAttack();
+            }
+            if (!isCrouching)
+            {
+                Attack();
+            }
+        }
+
+        UpdateAnimator();
     }
 
     void Move(float move)
@@ -72,20 +116,12 @@ public class P2Movement : MonoBehaviour
         Debug.Log("jump");
     }
 
-    void DiagonalJump()
+    void DiagonalJump(Vector2 direction)
     {
         isGrounded = false;
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        rb.AddForce(Vector2.right * speed, ForceMode2D.Impulse);
-        Debug.Log("forwardjump");
-    }
-
-    void DiagonalJump2()
-    {
-        isGrounded = false;
-        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        rb.AddForce(Vector2.left * speed, ForceMode2D.Impulse);
-        Debug.Log("backjump");
+        rb.AddForce(direction * speed, ForceMode2D.Impulse);
+        Debug.Log("diagonal jump");
     }
 
     void Crouch()
@@ -101,18 +137,38 @@ public class P2Movement : MonoBehaviour
         // Reset player's collider size and position if needed
     }
 
-    //void UpdateAnimator(float move)
-    //{
-    //animator.SetFloat("Speed", Mathf.Abs(move));
-    //animator.SetBool("isGrounded", isGrounded);
-    //animator.SetBool("isCrouching", isCrouching);
-    //}
-
-    void OnCollisionEnter2D(Collision2D collision)
+    void Attack()
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
+        isAttacking = true;
+        animator.SetTrigger("Attack");
+        Debug.Log("attack");
     }
+
+    void CrouchAttack()
+    {
+        isAttacking = true;
+        animator.SetTrigger("CrouchAttack");
+        Debug.Log("crouch attack");
+    }
+
+    void EndAttack()
+    {
+        isAttacking = false;
+    }
+
+    void UpdateAnimator()
+    {
+        float move = Input.GetAxis("Horizontal");
+        animator.SetFloat("Speed", Mathf.Abs(move));
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isCrouching", isCrouching);
+        //rOB IS MISSING A FEW EXtTRA CHROMOSOMES  
+    }
+     void OnCollisionEnter2D(Collision2D collision)
+     {
+         if (collision.gameObject.CompareTag("Ground"))
+         {
+            isGrounded = true;
+         }
+     }
 }
