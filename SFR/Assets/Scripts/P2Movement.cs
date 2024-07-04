@@ -46,9 +46,9 @@ public class P2Movement : MonoBehaviour
         }
 
         // Handle diagonal jumps
-        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.UpArrow) && isGrounded && !isCrouching)
+        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.UpArrow) && isGrounded && !isCrouching)
         {
-            DiagonalJump(Vector2.right);
+            DiagonalJump(Vector2.left);
             animator.SetBool("isDiagonalJumping", true);
         }
         else
@@ -56,9 +56,9 @@ public class P2Movement : MonoBehaviour
             animator.SetBool("isDiagonalJumping", false);
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.UpArrow) && isGrounded && !isCrouching)
+        if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.UpArrow) && isGrounded && !isCrouching)
         {
-            DiagonalJump(Vector2.left);
+            DiagonalJump(Vector2.right);
             animator.SetBool("isDiagonalJumping2", true);
         }
         else

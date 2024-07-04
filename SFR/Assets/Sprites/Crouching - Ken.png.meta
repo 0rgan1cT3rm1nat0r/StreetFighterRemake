@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cf3b1704a048ba34aa16fc105533e259
+guid: ec398902e0f48134682205a562307dcb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jumping - Ken_0
+      name: Crouching - Ken_0
       rect:
         serializedVersion: 2
         x: 5
-        y: 0
-        width: 33
-        height: 95
+        y: 1
+        width: 35
+        height: 58
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,92 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a49abb2cdc38c5d42b812d6c79ca8e89
-      internalID: 1173323818
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jumping - Ken_1
-      rect:
-        serializedVersion: 2
-        x: 43
-        y: 0
-        width: 29
-        height: 95
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 813e307f366345e4192d799c678a8f64
-      internalID: -2025476800
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jumping - Ken_2
-      rect:
-        serializedVersion: 2
-        x: 77
-        y: 0
-        width: 31
-        height: 95
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec16db4c53c41b549a682b94430f12f2
-      internalID: -371804734
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jumping - Ken_3
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 0
-        width: 29
-        height: 95
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1fc38bdd42ed3354b9f9477d1167d530
-      internalID: -430613161
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jumping - Ken_4
-      rect:
-        serializedVersion: 2
-        x: 147
-        y: 0
-        width: 33
-        height: 95
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4dfc638651b7ff44784adeb2c7048bd7
-      internalID: -2107048274
+      spriteID: 77c7f931786c4ee4598d655f4d98fdb5
+      internalID: -707971039
       vertices: []
       indices: 
       edges: []
@@ -251,11 +167,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Jumping - Ken_0: 1173323818
-      Jumping - Ken_1: -2025476800
-      Jumping - Ken_2: -371804734
-      Jumping - Ken_3: -430613161
-      Jumping - Ken_4: -2107048274
+      Crouching - Ken_0: -707971039
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
