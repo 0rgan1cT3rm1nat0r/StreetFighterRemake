@@ -6,6 +6,7 @@ public class P1Movement : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpForce = 10f;
+    public string attackTargetTag = "Enemy"; // The tag of the objects you want to detect during an attack
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -23,7 +24,7 @@ public class P1Movement : MonoBehaviour
     void Update()
     {
 
-        if (isAttacking) return;  // Prevent movement while attacking
+        //if (isAttacking) return;  // Prevent movement while attacking
 
         if (Input.GetKey(KeyCode.A) && isGrounded && !isCrouching)
         {
@@ -100,16 +101,19 @@ public class P1Movement : MonoBehaviour
                 Attack();
             }
         }
-
+        else
+        {
+            EndAttack();
+        }
         UpdateAnimator();
 
     }
 
-    void Move(float move)
+    /*void Move(float move)
     {
         Vector2 movement = new Vector2(move * speed, rb.velocity.y);
         rb.velocity = movement;
-    }
+    }*/
 
     void Jump()
     {
@@ -160,7 +164,7 @@ public class P1Movement : MonoBehaviour
     void UpdateAnimator()
     {
         float move = Input.GetAxis("Horizontal");
-        animator.SetFloat("Speed", Mathf.Abs(move));
+        //animator.SetFloat("Speed", Mathf.Abs(move));
         animator.SetBool("isGrounded", isGrounded);
         animator.SetBool("isCrouching", isCrouching);
         //rOB IS MISSING A FEW EXtTRA CHROMOSOMES  
@@ -172,6 +176,15 @@ public class P1Movement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (isAttacking && other.CompareTag("Enemy"))
+        {
+            Debug.Log("Hit " + other.name);
+            // Handle the collision with the attack target here
         }
     }
 }

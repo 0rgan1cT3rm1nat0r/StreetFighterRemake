@@ -159,7 +159,7 @@ public class P2Movement : MonoBehaviour
     void UpdateAnimator()
     {
         float move = Input.GetAxis("Horizontal");
-        animator.SetFloat("Speed", Mathf.Abs(move));
+        //animator.SetFloat("Speed", Mathf.Abs(move));
         animator.SetBool("isGrounded", isGrounded);
         animator.SetBool("isCrouching", isCrouching);
         //rOB IS MISSING A FEW EXtTRA CHROMOSOMES  
