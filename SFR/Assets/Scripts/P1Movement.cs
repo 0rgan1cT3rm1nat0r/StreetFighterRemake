@@ -6,7 +6,9 @@ public class P1Movement : MonoBehaviour
 {
     public float speed = 5f;
     public float jumpForce = 10f;
-    public string attackTargetTag = "Enemy"; // The tag of the objects you want to detect during an attack
+    public float attackRange = 1f;
+    public Transform attackPoint;
+    public LayerMask enemyLayers;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -90,21 +92,21 @@ public class P1Movement : MonoBehaviour
         }
 
         // Handle attacks
+        if (isAttacking) return;  // Prevent movement while attacking
+
+        float move = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(move * speed, rb.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Jump();
+        }
+
         if (Input.GetKeyDown(KeyCode.J))
         {
-            if (isCrouching)
-            {
-                CrouchAttack();
-            }
-            if (!isCrouching)
-            {
-                Attack();
-            }
+            Attack();
         }
-        else
-        {
-            EndAttack();
-        }
+
         UpdateAnimator();
 
     }
@@ -146,20 +148,28 @@ public class P1Movement : MonoBehaviour
     {
         isAttacking = true;
         animator.SetTrigger("Attack");
-        Debug.Log("attack");
+
+        // Detect enemies in range of the attack
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        // Damage them
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("We hit " + enemy.name);
+            // Add damage logic here
+        }
+
+        isAttacking = false;
     }
 
+    /*
     void CrouchAttack()
     {
         isAttacking = true;
         animator.SetTrigger("CrouchAttack");
         Debug.Log("crouch attack");
     }
-
-    void EndAttack()
-    {
-        isAttacking = false;
-    }
+    */
 
     void UpdateAnimator()
     {
@@ -186,5 +196,13 @@ public class P1Movement : MonoBehaviour
             Debug.Log("Hit " + other.name);
             // Handle the collision with the attack target here
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
