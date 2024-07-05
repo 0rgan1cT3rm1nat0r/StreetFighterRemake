@@ -149,14 +149,12 @@ public class P1Movement : MonoBehaviour
         isAttacking = true;
         animator.SetTrigger("Attack");
 
-        // Detect enemies in range of the attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
-        // Damage them
         foreach (Collider2D enemy in hitEnemies)
         {
             Debug.Log("We hit " + enemy.name);
-            // Add damage logic here
+            enemy.GetComponent<Health>().TakeDamage(10); // Assuming each attack deals 10 damage
         }
 
         isAttacking = false;
