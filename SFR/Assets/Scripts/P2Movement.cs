@@ -12,7 +12,7 @@ public class P2Movement : MonoBehaviour
     private bool isGrounded = true;
     private bool isCrouching = false;
     private bool isAttacking = false;
-    private bool Walking = false;
+    //private bool Walking = false;
 
     void Start()
     {
@@ -28,7 +28,7 @@ public class P2Movement : MonoBehaviour
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
             animator.SetBool("Walking", true);
-            print(Walking);
+            //print(Walking);
         }
         else
         {
@@ -113,7 +113,7 @@ public class P2Movement : MonoBehaviour
     {
         isGrounded = false;
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        Debug.Log("jump");
+        //Debug.Log("jump");
     }
 
     void DiagonalJump(Vector2 direction)
@@ -121,14 +121,14 @@ public class P2Movement : MonoBehaviour
         isGrounded = false;
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         rb.AddForce(direction * speed, ForceMode2D.Impulse);
-        Debug.Log("diagonal jump");
+        //Debug.Log("diagonal jump");
     }
 
     void Crouch()
     {
         isCrouching = true;
         // Adjust player's collider size and position if needed
-        Debug.Log("crouch");
+        //Debug.Log("crouch");
     }
 
     void StandUp()
