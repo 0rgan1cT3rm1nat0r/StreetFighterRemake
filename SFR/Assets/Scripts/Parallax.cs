@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
+using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-    private float lengh, startpos;
+    private float length, startpos;
     public GameObject cam;
     public float parallaxEffect;
 
     void Start()
     {
         startpos = transform.position.x;
-        lengh = GetComponent<SpriteRenderer>().bounds.size.x;
+        length = GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
     void Update()
@@ -22,14 +20,14 @@ public class Parallax : MonoBehaviour
 
         transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
 
-        if (temp > startpos + lengh)
+        if (temp > startpos + length)
         {
-            startpos += lengh;
+            startpos += length;
         }
 
-        else if (temp < startpos - lengh)
+        else if (temp < startpos - length)
         {
-            startpos -= lengh;
+            startpos -= length;
 
         }
     }

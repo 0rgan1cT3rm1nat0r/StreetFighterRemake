@@ -757,7 +757,6 @@ GameObject:
   m_Component:
   - component: {fileID: 731106887}
   - component: {fileID: 731106886}
-  - component: {fileID: 731106888}
   m_Layer: 0
   m_Name: Ken Stage
   m_TagString: Untagged
@@ -832,20 +831,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &731106888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731106885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1289a6e10aeebd3419e02c28bed0d1fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 519420028}
-  parallaxEffect: 1
 --- !u!1 &1257754254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +1037,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1623945874}
   - component: {fileID: 1623945873}
+  - component: {fileID: 1623945875}
+  - component: {fileID: 1623945876}
   m_Layer: 0
   m_Name: Ken Sky
   m_TagString: Untagged
@@ -1119,13 +1106,41 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623945872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0, z: 1.01}
+  m_LocalPosition: {x: 0.1, y: 0, z: 1.02}
   m_LocalScale: {x: 4.8176885, y: 4.8176885, z: 4.8176885}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1623945875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623945872}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1289a6e10aeebd3419e02c28bed0d1fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 519420028}
+  parallaxEffect: 0
+--- !u!114 &1623945876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623945872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a3cad9ad4df7e418808f1a6701be82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 519420028}
+  parallaxEffect: 0
 --- !u!1 &2139391625
 GameObject:
   m_ObjectHideFlags: 0
